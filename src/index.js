@@ -26,21 +26,21 @@ class Board extends React.Component{
         return (
             <div>
                 <div className='board-row'>
-                {this.renderSquare(0)}
-                {this.renderSquare(1)}
-                {this.renderSquare(2)}
+                    {this.renderSquare(0)}
+                    {this.renderSquare(1)}
+                    {this.renderSquare(2)}
                 </div>
 
                 <div className='board-row'>
-                {this.renderSquare(3)}
-                {this.renderSquare(4)}
-                {this.renderSquare(5)}
+                    {this.renderSquare(3)}
+                    {this.renderSquare(4)}
+                    {this.renderSquare(5)}
                 </div>
 
                 <div className='board-row'>
-                {this.renderSquare(6)}
-                {this.renderSquare(7)}
-                {this.renderSquare(8)}
+                    {this.renderSquare(6)}
+                    {this.renderSquare(7)}
+                    {this.renderSquare(8)}
                 </div>
             </div>
         );
@@ -71,17 +71,17 @@ class Game extends React.Component{
         squares[i] = this.state.xIsNext ? 'X' : 'O';
         this.setState({
             history: history.concat([{
-                squares: squares,
+                squares: squares
             }]),
             stepNumber: history.length,
-            xIsNext: !this.state.xIsNext,
+            xIsNext: !this.state.xIsNext
         });
     }
 
     jumpTo(step){
         this.setState({
             stepNumber: step,
-            xIsNext: (step % 2) === 0,
+            xIsNext: (step % 2) === 0
         });
         // why are we changing xIsNext if the step number is even?
     }
@@ -92,9 +92,9 @@ class Game extends React.Component{
         const winner = calculateWinner(current.squares);
 
         const moves = history.map((step, move) => {
-            const desc = move?
-            'Go to move #' + move :
-            'Go to game start';
+            const desc = move ?
+                'Go to move #' + move :
+                'Go to game start';
             return (
                 <li key={move}>
                     <button onClick={() => this.jumpTo(move)}>{desc}</button>
@@ -120,7 +120,7 @@ class Game extends React.Component{
 
                 <div className='game-info'>
                     <div>{status}</div>
-                    <ol>{/*TODO*/}</ol>
+                    <ol>{moves}</ol>
                 </div>
             </div>    
         );       
